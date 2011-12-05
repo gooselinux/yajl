@@ -1,0 +1,23 @@
+diff -rup lloyd-yajl-45a1bdb.orig/src/CMakeLists.txt lloyd-yajl-45a1bdb.new/src/CMakeLists.txt
+--- lloyd-yajl-45a1bdb.orig/src/CMakeLists.txt	2009-10-29 23:35:39.000000000 +0000
++++ lloyd-yajl-45a1bdb.new/src/CMakeLists.txt	2009-12-07 17:20:20.000000000 +0000
+@@ -37,7 +37,7 @@ SET (PUB_HDRS api/yajl_parse.h api/yajl_
+ #ADD_DEFINITIONS(-DYAJL_LEXER_DEBUG)
+ 
+ # set up some paths
+-SET (libDir ${CMAKE_CURRENT_BINARY_DIR}/../${YAJL_DIST_NAME}/lib)
++SET (libDir ${CMAKE_CURRENT_BINARY_DIR}/../${YAJL_DIST_NAME}/${LIB_INSTALL_DIR})
+ SET (incDir ${CMAKE_CURRENT_BINARY_DIR}/../${YAJL_DIST_NAME}/include/yajl)
+ 
+ # set the output path for libraries
+@@ -71,8 +71,8 @@ ENDFOREACH (header ${PUB_HDRS})
+ INCLUDE_DIRECTORIES(${incDir}/..)
+ 
+ IF(NOT WIN32)
+-  INSTALL(TARGETS yajl LIBRARY DESTINATION lib)
+-  INSTALL(TARGETS yajl_s ARCHIVE DESTINATION lib)
++  INSTALL(TARGETS yajl LIBRARY DESTINATION ${LIB_INSTALL_DIR})
++  INSTALL(TARGETS yajl_s ARCHIVE DESTINATION ${LIB_INSTALL_DIR})
+   INSTALL(DIRECTORY api/ DESTINATION include/yajl
+           FILES_MATCHING PATTERN "*.h")
+ ENDIF()
